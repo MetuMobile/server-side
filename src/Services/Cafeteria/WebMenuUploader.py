@@ -25,6 +25,7 @@ class WebMenuUploadComplete(MethodView):
             file_name = time_stamp+'.xlsx'
             destination = os.path.join(Config.dynamicFilesFolderPath, file_name)# "/".join([target, file_name])
             file.save(destination)
-            MealImportExcelFileRefresh(destination).updateCafeteriaMenu()
+            MealImportExcelFileRefresh(destination).updateCafeteriaMenu() # patlarsa buradan patliyor olabilir.
+            # unresolved reference olacak cunku
 
         return render_template("complete.html")

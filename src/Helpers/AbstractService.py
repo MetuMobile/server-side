@@ -10,7 +10,10 @@ class AbstractService(ABC):
     def addEndpoints(self):
         pass
 
-    def addUrl(self, inServiceUrl: str, _class):
+    def addUrl(self, inServiceUrl: str, _class, viewName=None):
         endpointPath = '/services/'+str(self.serviceName)+'/'+inServiceUrl+'/'
-        self.flaskApp.add_url_rule(endpointPath,
-                                   view_func=_class.as_view(endpointPath))
+        if viewName:
+            self.flaskApp.add_url_rule(endpointPath, view_func=_class.as_view(viewName))
+        else:
+            self.flaskApp.add_url_rule(endpointPath, view_func=_class.as_view(endpointPath))
+
