@@ -1,12 +1,8 @@
-from flask.views import MethodView
-from flask import jsonify
 import pymysql.cursors
-from Config import Config
-from datetime import datetime, timedelta
-from CredentialsConfig import CredentialsConfig
 
 class MetuEventsDb:
     def __init__(self):
+        from CredentialsConfig import CredentialsConfig
         self.credentials = CredentialsConfig.metuEventsDbCredentials
 
     def _connect(self):
