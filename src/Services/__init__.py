@@ -1,6 +1,7 @@
 from typing import List
 
 from Helpers.AbstractService import AbstractService
+from Services.Booklet import Booklet
 from Services.Event import Event
 from Services.FeaturedApps import FeaturedApps
 from Services.Phonebook import Phonebook
@@ -11,6 +12,7 @@ from Services.Cafeteria import Cafeteria
 class ApiServices:
     def __init__(self):
         self.allServices: List[AbstractService] = []
+        self.allServices.append(Booklet)
         self.allServices.append(Cafeteria)
         self.allServices.append(Event)
         self.allServices.append(FeaturedApps)
