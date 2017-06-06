@@ -2,11 +2,14 @@ from os import path
 
 
 class Config:
+    debug = True
     serverType = "Deployment"
-    serverIp = "144.122.156.67"
+    if debug==True:
+        serverIp = "127.0.0.1"
+    else:
+        serverIp = "144.122.156.67"
     serverPort = 1071
     os = 'Linux'
-    debug = True
 
     home = path.dirname(path.abspath(__file__))
     APP_DIR = home
@@ -24,3 +27,4 @@ class Config:
 
     serverRootLink = "http://" + serverIp + ":" + str(serverPort) + "/api/v1"
     servicesLink = serverRootLink + "/"
+    cafeteriaServiceUrl = servicesLink + 'cafeteria'
