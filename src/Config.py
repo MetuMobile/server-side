@@ -13,16 +13,11 @@ class Config:
 
     home = path.dirname(path.abspath(__file__))
     APP_DIR = home
-    dynamicFilesFolderPath = path.join(home, 'dynamicFiles')
 
-    # staticFolderPath = path.join(home, "imageUploads")
-    # dynamicFolderPath = path.join(home, "dynamicImages")
-    # loggerPath = path.join(home, 'log.txt')
-    # cafeteriaMenuExcelPath = path.join(home, 'Cafeteria', 'cafeteriaMenu.xlsx')
-
-    staticFolderPath = path.join(home, 'imageUploads')
-    dynamicFolderPath = path.join(home, 'dynamicImages')
-    loggerPath = 'log.txt'
+    loggerPath = path.join(home, 'log.txt')
+    excelExportFilesFolderPath = path.join(home, 'excelExportFiles')
+    staticImageFolderPath = path.join(home, 'staticImages')
+    resizedImagesFolderPath = path.join(home, 'resizedImages')
     cafeteriaMenuExcelPath = path.join(home, 'Services', 'Cafeteria', 'Menus', 'cafeteriaMenu.xlsx')
 
     serverRootLink = "http://" + serverIp + ":" + str(serverPort) + "/api/v1"
