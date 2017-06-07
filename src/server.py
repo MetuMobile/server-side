@@ -7,6 +7,12 @@ from Services import ApiServices
 from Services.Cafeteria import Cafeteria
 from Services.CafeteriaRate import CafeteriaRate
 from Services.Booklet import Booklet
+from Services.Event import Event
+from Services.FeaturedApps import FeaturedApps
+from Services.Phonebook import Phonebook
+from Services.Shuttle import Shuttle
+from Services.Weather import Weather
+
 
 class Server:
     def __init__(self):
@@ -32,6 +38,11 @@ class Server:
         self.services.append(Booklet)
         self.services.append(Cafeteria)
         self.services.append(CafeteriaRate)
+        self.services.append(Event)
+        self.services.append(FeaturedApps)
+        self.services.append(Phonebook)
+        self.services.append(Shuttle)
+        self.services.append(Weather)
         self.app.add_url_rule(Config.apiRootLink + '/services/', defaults={'servicelist': self.services},
                               view_func=ApiServices.as_view('ApiServices'))
         self._addBlueprintsOfServices()

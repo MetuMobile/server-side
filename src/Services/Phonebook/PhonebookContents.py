@@ -5,8 +5,8 @@ from Config import Config
 
 
 class PhonebookContents(MethodView):
-    def get(self):
-        return jsonify(Phonebook=self.getPhonebook())
+    def get(self, id):
+        return jsonify(Phonebook=self.getPhonebook(id))
 
     def __init__(self):
         if Config.debug:
@@ -15,13 +15,14 @@ class PhonebookContents(MethodView):
             self.phonebookBridge = PhonebookBridge()
         pass
 
-    def getPhonebook(self):
+    def getPhonebook(self, id):
         rawDbResult = self.phonebookBridge.fetchAllFromDb()
         activePhonebookRecords = []
         for eachRecord in rawDbResult:
             if eachRecord['durum'] == "aktif":
                 recordDict = {}
                 recordDict['title'] = eachRecord['title']
+                recordDict['id'] = eachRecord['id']
                 recordDict['pinned'] = False
                 name = eachRecord['name']
                 if name[0] == " " or name[0] == "!":
@@ -38,6 +39,8 @@ class PhonebookContents(MethodView):
                 except:
                     recordDict['email'] = None
                 activePhonebookRecords.append(recordDict)
+                if id == recordDict['id']:
+                    return recordDict
         return activePhonebookRecords
 
 
