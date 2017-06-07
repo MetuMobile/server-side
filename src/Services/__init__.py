@@ -2,7 +2,7 @@ from typing import List
 
 from Helpers.AbstractService import AbstractService
 from Services.Announcements import Announcements
-from Services.Booklet import Booklet
+# from Services.Booklet import Booklet
 from Services.CafeteriaRate import CafeteriaRate
 from Services.Event import Event
 from Services.FeaturedApps import FeaturedApps
@@ -16,7 +16,7 @@ class ApiServices:
     def __init__(self):
         self.allServices: List[AbstractService] = []
         self.allServices.append(Announcements)
-        self.allServices.append(Booklet)
+        # self.allServices.append(Booklet)
         self.allServices.append(Cafeteria)
         self.allServices.append(CafeteriaRate)
         self.allServices.append(Event)

@@ -5,9 +5,9 @@ from Config import Config
 from Services.Announcements.MetuAnnouncementsBridge import MetuAcademicAndDormCalendarBridge
 
 
-class AllAnnouncements(MethodView):
+class Root(MethodView):
     def get(self):
-        return jsonify(Booklets=self.getAnnouncements())
+        return jsonify(Announcements=self.getAnnouncements())
 
     def getAnnouncements(self):
         announcements = {}

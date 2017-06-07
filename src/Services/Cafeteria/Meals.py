@@ -5,7 +5,7 @@ from Helpers.MongoDatabase import MongoDatabase
 
 
 class Meals(MethodView):
-    def get(self):
+    def get(self, mealId):
         futureOnly = request.values.get('futureonly')
         if futureOnly=='true' or futureOnly=='True':
             return jsonify(CafeteriaMenu=MongoDatabase().getUpcomingCafeteriaMenu())

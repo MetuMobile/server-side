@@ -4,18 +4,24 @@ from flask import jsonify
 from Config import Config
 
 
-class Booklets(MethodView):
-    def get(self):
-        return jsonify(Booklets=self.getBooklets())
+class Root(MethodView):
+    def get(self, bookletId):
+        if bookletId==None:
+            return jsonify(Booklets=self.getBooklets())
+        else:
+            return jsonify(Booklet=self.getBooklets()[bookletId])
 
     def getBooklets(self):
         bookletRecords = []
+        counter = 0
         for record in self._getBookletData():
             try:
+                record.append(counter)
                 recordDict = self._recordToDict(record)
                 bookletRecords.append(recordDict)
             except:
                 pass
+            counter += 1
         return bookletRecords
 
     def _recordToDict(self, record):
@@ -25,6 +31,7 @@ class Booklets(MethodView):
         dict['tr_url'] = record[2]
         dict['en_title'] = record[3]
         dict['en_url'] = record[4]
+        dict['id'] = record[5]
         return dict
 
     def _getBookletData(self):

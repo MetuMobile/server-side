@@ -1,19 +1,12 @@
-from abc import ABC, abstractmethod
+from abc import ABC
+
+from flask import Blueprint
+from flask import url_for
+
+from Config import Config
 
 
 class AbstractService(ABC):
-    def __init__(self, app):
-        self.flaskApp = app
+    def __init__(self):
         self.serviceName = type(self).__name__.lower()
-
-    @abstractmethod
-    def addEndpoints(self):
-        pass
-
-    def addUrl(self, inServiceUrl: str, _class, viewName=None):
-        endpointPath = '/services/'+str(self.serviceName)+'/'+inServiceUrl+'/'
-        if viewName:
-            self.flaskApp.add_url_rule(endpointPath, view_func=_class.as_view(viewName))
-        else:
-            self.flaskApp.add_url_rule(endpointPath, view_func=_class.as_view(endpointPath))
-
+        self.blueprint = Blueprint(self.serviceName, self.serviceName)

@@ -20,6 +20,6 @@ class Config:
     resizedImagesFolderPath = path.join(home, 'resizedImages')
     cafeteriaMenuExcelPath = path.join(home, 'Services', 'Cafeteria', 'Menus', 'cafeteriaMenu.xlsx')
 
-    serverRootLink = "http://" + serverIp + ":" + str(serverPort) + "/api/v1"
-    servicesLink = serverRootLink + "/"
-    cafeteriaServiceUrl = servicesLink + 'cafeteria'
+    serverRootLink = "http://" + serverIp + ":" + str(serverPort)
+    apiRootLink = "/api/v1"
+    cafeteriaServiceUrl = '' #delete after removing code that depends on this
