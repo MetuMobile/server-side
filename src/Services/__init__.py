@@ -1,31 +1,13 @@
-from typing import List
+from flask import jsonify
+from flask.views import MethodView
+from Config import Config
 
-from Helpers.AbstractService import AbstractService
-from Services.Announcements import Announcements
-# from Services.Booklet import Booklet
-from Services.CafeteriaRate import CafeteriaRate
-from Services.Event import Event
-from Services.FeaturedApps import FeaturedApps
-from Services.ImageResize import ImageResize
-from Services.Phonebook import Phonebook
-from Services.Shuttle import Shuttle
-from Services.Weather import Weather
-from Services.Cafeteria import Cafeteria
-
-class ApiServices:
+class ApiServices(MethodView):
     def __init__(self):
-        self.allServices: List[AbstractService] = []
-        self.allServices.append(Announcements)
-        # self.allServices.append(Booklet)
-        self.allServices.append(Cafeteria)
-        self.allServices.append(CafeteriaRate)
-        self.allServices.append(Event)
-        self.allServices.append(FeaturedApps)
-        self.allServices.append(ImageResize)
-        self.allServices.append(Phonebook)
-        self.allServices.append(Shuttle)
-        self.allServices.append(Weather)
+        self.endpointNames = []
 
-    def addEndpoints(self, flaskApp):
-        for service in self.allServices:
-            service(flaskApp).addEndpoints()
+    def get(self, servicelist):
+        for service in servicelist:
+            self.endpointNames.append({'href': Config.serverRootLink + Config.apiRootLink +'/services/'+
+                                               service.__name__.lower()})
+        return jsonify(Services = self.endpointNames)

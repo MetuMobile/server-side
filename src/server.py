@@ -2,8 +2,10 @@ from flask import Flask
 import sys
 from Config import Config
 # from Services import Services
-from Services import Announcements
-from Services import Cafeteria
+from Services.Announcements import Announcements
+from Services import ApiServices
+from Services.Cafeteria import Cafeteria
+from Services.CafeteriaRate import CafeteriaRate
 from Services.Booklet import Booklet
 
 class Server:
@@ -29,7 +31,9 @@ class Server:
         self.services.append(Announcements)
         self.services.append(Booklet)
         self.services.append(Cafeteria)
-
+        self.services.append(CafeteriaRate)
+        self.app.add_url_rule(Config.apiRootLink + '/services/', defaults={'servicelist': self.services},
+                              view_func=ApiServices.as_view('ApiServices'))
         self._addBlueprintsOfServices()
 
     def _addBlueprintsOfServices(self):
