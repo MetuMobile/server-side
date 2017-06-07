@@ -1,5 +1,5 @@
 from Helpers.AbstractService import AbstractService
-from Services.ImageResize import ResizeAll
+from Services.ImageResize.ResizeAll import ResizeAll
 
 
 class ImageResize(AbstractService):

@@ -5,7 +5,7 @@ from Services.CafeteriaRate.CafeteriaRating import CafeteriaRating
 from Services.ImageResize.ImageProcessor import ImageProcessor
 
 
-class Meals(MethodView):
+class ResizeAll(MethodView):
     def get(self):
         ImageProcessor().resizeAllStaticPhotos()
         return "200"
