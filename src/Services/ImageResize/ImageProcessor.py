@@ -1,4 +1,4 @@
-from PIL import Image, ImageOps
+# from PIL import Image, ImageOps
 
 from Config import Config
 
@@ -42,6 +42,6 @@ class ImageProcessor:
         outfile = Config.resizedImagesFolderPath + bigPhoto + '.' + resolution['resolutionName'] + ".jpeg"
         if infile != outfile:
             imageRelativePath = Config.staticImageFolderPath + infile
-            image = Image.open(imageRelativePath)
-            processedImage = ImageOps.fit(image, size)#open("../static/"+infile)
-            processedImage.save(outfile, "JPEG")
+            # image = Image.open(imageRelativePath)
+            # processedImage = ImageOps.fit(image, size)#open("../static/"+infile)
+            # processedImage.save(outfile, "JPEG")
