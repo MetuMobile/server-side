@@ -2,8 +2,9 @@ from datetime import datetime
 from bson import ObjectId
 from hashlib import md5
 
-from Helpers.MongoDatabase import MongoDatabase
+from flask import url_for
 
+from Helpers.MongoDatabase import MongoDatabase
 
 class CafeteriaRating:
     def __init__(self):
@@ -46,7 +47,7 @@ class CafeteriaRating:
         import json
         from urllib.request import urlopen
         from Config import Config
-        url = Config.cafeteriaServiceUrl + "/allmeals/"
+        url = Config.serverRootLink + url_for('cafeteria.meals')
         response = urlopen(url).read()
         jsonEndpointData = json.loads(response)
         cafeteriaMenuArray = jsonEndpointData['CafeteriaMenu']

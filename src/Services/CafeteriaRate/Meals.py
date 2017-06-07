@@ -5,20 +5,27 @@ from Services.CafeteriaRate.CafeteriaRating import CafeteriaRating
 
 
 class Meals(MethodView):
-    def get(self):
+    def get(self, mealId):
         try:
             expandforexcelexport = request.values.get('expandforexcelexport') in ['True', 'true', '1']
         except:
             expandforexcelexport = False
-        mealRatings = CafeteriaRating().getMealRating()
-        if expandforexcelexport:
-            mealRatings = self.expandRatingsWithMeal(mealRatings)
-            for mealRating in mealRatings:
-                mealRating['numberOfRates'] = CafeteriaRating().getMealRateCount(mealId = mealRating['_id'])
-        result = jsonify(mealRatings = mealRatings)
+        if mealId:
+            mealRating = CafeteriaRating().getMealRating(mealId)
+            result = jsonify(mealRating = mealRating)
+        else:
+            mealRatings = CafeteriaRating().getMealRating()
+            if expandforexcelexport:
+                mealRatings = self._expandRatingsWithMeal(mealRatings)
+                for mealRating in mealRatings:
+                    mealRating['numberOfRates'] = CafeteriaRating().getMealRateCount(mealId = mealRating['_id'])
+            result = jsonify(mealRatings = mealRatings)
         return result
 
-    def expandRatingsWithMeal(self, mealRatings):
+    def post(self, mealId):
+        return CafeteriaRating().rateMenu(mealId)
+
+    def _expandRatingsWithMeal(self, mealRatings):
         for meal in mealRatings:
             mealId = meal['_id']
 
