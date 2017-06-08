@@ -13,17 +13,3 @@ class CafeteriaRate(AbstractService):
 
         rootView = Root.as_view('root')
         self.blueprint.add_url_rule('/', view_func=rootView)
-
-    def addEndpoints(self):
-
-        # self.addUrl('meals', ) post a rating
-        # def rateCafeteria(mealId):
-        #     return CafeteriaRating().rateMenu(mealId)
-
-        # self.addUrl('meals', ) get a rating for meal
-        # def showRating(mealId):
-        #     return jsonify(mealRating=CafeteriaRating().getMealRating(str(mealId)))
-
-
-        pass
-

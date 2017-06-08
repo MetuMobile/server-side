@@ -10,6 +10,3 @@ class Phonebook(AbstractService):
         PhonebookView = PhonebookContents.as_view('phonebook')
         self.blueprint.add_url_rule('/', defaults={'id': None}, view_func=PhonebookView)
         self.blueprint.add_url_rule('/<id>', view_func=PhonebookView)
-
-    def addEndpoints(self):
-        self.addUrl('phonebook', PhonebookContents)

@@ -20,8 +20,3 @@ class FeaturedApps(AbstractService):
     
         rootView = Root.as_view('root')
         self.blueprint.add_url_rule('/', defaults={'serviceName': self.serviceName}, view_func=rootView)
-
-def addEndpoints(self):
-        self.addUrl('android', Android)
-        self.addUrl('ios', Ios)
-        self.addUrl('windows', Windows)
