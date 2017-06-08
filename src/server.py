@@ -1,5 +1,7 @@
 from flask import Flask
 import sys
+
+from Api import Api
 from Config import Config
 # from Services import Services
 from Services.Announcements import Announcements
@@ -45,6 +47,8 @@ class Server:
         self.services.append(Weather)
         self.app.add_url_rule(Config.apiRootLink + '/services/', defaults={'servicelist': self.services},
                               view_func=ApiServices.as_view('ApiServices'))
+        self.app.add_url_rule(Config.apiRootLink + '/',
+                              view_func=Api.as_view('Api'))
         self._addBlueprintsOfServices()
 
     def _addBlueprintsOfServices(self):

@@ -10,6 +10,7 @@ class Config:
         serverIp = "144.122.156.67"
     serverPort = 1071
     os = 'Linux'
+    serverVersion = 1
 
     home = path.dirname(path.abspath(__file__))
     APP_DIR = home
@@ -21,5 +22,5 @@ class Config:
     cafeteriaMenuExcelPath = path.join(home, 'Services', 'Cafeteria', 'Menus', 'cafeteriaMenu.xlsx')
 
     serverRootLink = "http://" + serverIp + ":" + str(serverPort)
-    apiRootLink = "/api/v1"
+    apiRootLink = "/api/v" + str(serverVersion)
     cafeteriaServiceUrl = '' #delete after removing code that depends on this
