@@ -2,8 +2,7 @@ from os import path
 
 
 class Config:
-    debug = True
-    serverType = "Deployment"
+    debug = False
     if debug==True:
         serverIp = "127.0.0.1"
     else:
