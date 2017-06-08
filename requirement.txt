@@ -2,4 +2,3 @@ Flask
 openpyxl==2.4.0
 pymongo==3.3.1
 PyMySQL==0.7.9
-Pillow==3.4.2
