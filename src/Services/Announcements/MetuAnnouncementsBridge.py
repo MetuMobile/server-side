@@ -1,4 +1,4 @@
-import pymysql
+from pymysql import pymysql
 from Config import Config
 
 
